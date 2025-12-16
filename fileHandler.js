@@ -11,13 +11,15 @@ If the file doesn’t exist, return an empty array.
 const fs = require("fs");
 
 function saveTasks(filePath, tasks){
-fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2), "utf-8");
+    //JSON.stringify() → turns JS array into JSON text
+    fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2), "utf-8");
 }
 function loadTasks(filePath){
     if(!fs.existsSync(filePath)){
            return [];
     }
   const data = fs.readFileSync(filePath, "utf-8");
+  //JSON.parse() → turns JSON into a JS array
   return JSON.parse(data);
 }
 
